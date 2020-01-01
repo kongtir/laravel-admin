@@ -1,0 +1,38 @@
+laravel的数据库部分有一个很大的优点是使用了全球最先进的Eloquent ORM；
+她让数据库的操作变的简单安全且无懈可击；
+laravel的数据库部分有一个很大的缺点是使用了全球最先进的Eloquent ORM；
+她让数据库的操作变的缓慢笨重且无药可救；
+
+在使用 laravel 的时候我们不能直接操作数据库创建表；
+而是要通过数据库迁移 Migrations ；
+让数据库的操作像有git一样可以保留操作记录；
+
+看着开发文档再参考 database/migrations 目录下自带的 user 表迁移文件；
+很容易就上手了；
+
+php artisan make:migration create_表名的复数形式_table
+
+laravel 表默认都是以单词的复数形式命名；
+还有就是表最好都加上 created_at 、 updated_at;
+如果需要软删除加上deleted_at；[有配置直接加上这个]
+
+articles 表为示例继续；
+第一种是实例化DB类传入表名来操作；
+
+laravel 对应的则是 DB facade；
+DB::table('articles'); // laravel
+DB('articles')
+    ->select('id', 'title', 'user_id') //=>->select();
+    ->where('user_id', 1)   //whereNotIn、whereBetween
+    ->where('id', '>', 20)
+    ->whereIn('user_id', [1, 2, 3])
+    ->groupBy('title')
+    ->orderBy('id', 'desc')
+    ->having('id', '>', 5)
+    ->limit(10)
+    ->get();==>select();
+    //->count();=>->count();
+
+    laravel 得到的则是一个 Collection 对象；
+    建议使用 Collection 集合；
+    相信我慢慢习惯了你会爱上使用 Collection 的；

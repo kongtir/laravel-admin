@@ -1,0 +1,708 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Hello MUI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="/css/mui.css">
+    <script>
+        var xuanzelist ={};
+    </script>
+    <style>
+        html,
+        body {
+            background-color: #efeff4;
+        }
+        .mui-views,
+        .mui-view,
+        .mui-pages,
+        .mui-page,
+        .mui-page-content {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #efeff4;
+        }
+        .mui-pages {
+            top: 46px;
+            height: auto;
+        }
+        .mui-scroll-wrapper,
+        .mui-scroll {
+            background-color: #efeff4;
+        }
+        .mui-page.mui-transitioning {
+            -webkit-transition: -webkit-transform 300ms ease;
+            transition: transform 300ms ease;
+        }
+        .mui-page-left {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+        .mui-ios .mui-page-left {
+            -webkit-transform: translate3d(-20%, 0, 0);
+            transform: translate3d(-20%, 0, 0);
+        }
+        .mui-navbar {
+            position: fixed;
+            right: 0;
+            left: 0;
+            z-index: 10;
+            height: 44px;
+            background-color: #f7f7f8;
+        }
+        .mui-navbar .mui-bar {
+            position: absolute;
+            background: transparent;
+            text-align: center;
+        }
+        .mui-android .mui-navbar-inner.mui-navbar-left {
+            opacity: 0;
+        }
+        .mui-ios .mui-navbar-left .mui-left,
+        .mui-ios .mui-navbar-left .mui-center,
+        .mui-ios .mui-navbar-left .mui-right {
+            opacity: 0;
+        }
+        .mui-navbar .mui-btn-nav {
+            -webkit-transition: none;
+            transition: none;
+            -webkit-transition-duration: .0s;
+            transition-duration: .0s;
+        }
+        .mui-navbar .mui-bar .mui-title {
+            display: inline-block;
+            width: auto;
+        }
+        .mui-page-shadow {
+            position: absolute;
+            right: 100%;
+            top: 0;
+            width: 16px;
+            height: 100%;
+            z-index: -1;
+            content: '';
+        }
+        .mui-page-shadow {
+            background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+            background: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+        }
+        .mui-navbar-inner.mui-transitioning,
+        .mui-navbar-inner .mui-transitioning {
+            -webkit-transition: opacity 300ms ease, -webkit-transform 300ms ease;
+            transition: opacity 300ms ease, transform 300ms ease;
+        }
+        .mui-page {
+            display: none;
+        }
+        .mui-pages .mui-page {
+            display: block;
+        }
+        .mui-page .mui-table-view:first-child {
+            margin-top: 15px;
+        }
+        .mui-page .mui-table-view:last-child {
+            margin-bottom: 30px;
+        }
+        .mui-table-view {
+            margin-top: 20px;
+        }
+
+        .mui-table-view span.mui-pull-right {
+            color: #999;
+        }
+        .mui-table-view-divider {
+            background-color: #efeff4;
+            font-size: 14px;
+        }
+        .mui-table-view-divider:before,
+        .mui-table-view-divider:after {
+            height: 0;
+        }
+        .head {
+            height: 40px;
+        }
+        #head {
+            line-height: 40px;
+        }
+        .head-img {
+            width: 40px;
+            height: 40px;
+        }
+        #head-img1 {
+            position: absolute;
+            bottom: 10px;
+            right: 40px;
+            width: 40px;
+            height: 40px;
+        }
+        .update {
+            font-style: normal;
+            color: #999999;
+            margin-right: -25px;
+            font-size: 15px
+        }
+        .mui-fullscreen {
+            position: fixed;
+            z-index: 20;
+            background-color: #000;
+        }
+        .mui-ios .mui-navbar .mui-bar .mui-title {
+            position: static;
+        }
+
+
+        .mui-plus.mui-plus-stream .mui-stream-hidden{
+            display: none !important;
+        }
+    body{
+        font-size: 16px;!important;
+    }
+        /*问题反馈在setting页面单独的css==end*/
+
+    </style>
+    <link rel="stylesheet" href="/vendor/laravel-admin/AdminLTE/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/build.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+</head>
+
+<body class="mui-fullscreen">
+<!--页面主结构开始-->
+<div id="app" class="mui-views">
+    <div class="mui-view">
+        <div class="mui-navbar">
+        </div>
+        <div class="mui-pages">
+        </div>
+    </div>
+</div>
+<!--页面主结构结束-->
+<!--单页面开始-->
+<div id="setting" class="mui-page">
+    <!--页面标题栏开始-->
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span>
+        </button>
+        <h1 class="mui-center mui-title">价格预估</h1>
+    </div>
+    <!--页面标题栏结束-->
+    <!--页面主内容区开始-->
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+
+                <div class="mui-content-padded">
+                    <h4>项目类型选择:</h4>
+                </div>
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="alert(1);xuanzelist.xm='普通项目';xuanzelist.fwq='国内服务器';xuanzelist.fwqje='1650';">
+                        <a href="#notifications"    class="mui-navigate-right">普通项目</a>
+                    </li>
+                    <li class="mui-table-view-cell" >
+                        <a href="#notifications" class="mui-navigate-right"
+                           onclick="alert(2);xuanzelist.xm='三级分销等资金盘';xuanzelist.fwq='国外服务器';xuanzelist.fwqje='3300';"
+                        >币圈,资金盘,互助,三级分销,棋牌</a>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+    </div>
+    <!--页面主内容区结束-->
+</div>
+<!--单页面结束-->
+
+<div id="notifications" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span>返回
+        </button>
+        <h1 class="mui-center mui-title">是否需要额外开发</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.moban='选择案例中的项目';xuanzelist.mobanje=0;"
+                    >
+                        <a href="#step3" class="mui-navigate-right">已在案例中选中应用</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.moban='需要开发或仿制';xuanzelist.mobanje=0;"
+                    >
+                        <a href="#step2" class="mui-navigate-right">需要开发或仿制</a>
+                    </li>
+                </ul>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="step2" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span>返回
+        </button>
+        <h1 class="mui-center mui-title">开发复杂层度预估</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell">
+                        <a href="#step3" class="mui-navigate-right"
+                           onclick="xuanzelist.mobanje+=2200;"
+                        >一般:如官网等</a>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a href="#step3" class="mui-navigate-right"
+                           onclick="xuanzelist.mobanje+=3200;"
+                        >适中:多币种,积分资金盘等</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.mobanje+=6200;"
+                    >
+                        <a href="#step3" class="mui-navigate-right">复杂:多用户商城+多级分销等</a>
+                    </li>
+                </ul>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="step3" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span>返回
+        </button>
+        <h1 class="mui-center mui-title">是否需要线上支付</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.pay='无需线上支付';xuanzelist.payje=0;"
+                    >
+                        <a href="#step6" class="mui-navigate-right"
+
+                        >无需线上支付</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.pay='需要微信或支付宝支付';xuanzelist.payje=0;">
+                        <a href="#step4" class="mui-navigate-right">需要微信或支付宝支付</a>
+                    </li>
+                </ul>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="step4" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span>返回
+        </button>
+        <h1 class="mui-center mui-title">是否有相关账户</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.zhanghu='我已有公司账户的支付宝或微信';xuanzelist.payje=0;"
+                    >
+                        <a href="#step7" class="mui-navigate-right">我已有公司账户的支付宝或微信 </a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.zhanghu='没有支付账户';xuanzelist.payje=0;"
+                    >
+                        <a href="#step5" class="mui-navigate-right">我还没有或者不知道这是什么</a>
+                    </li>
+                </ul>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="step5" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span>返回
+        </button>
+        <h1 class="mui-center mui-title">是否有营业执照</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.sq='我有正常营业执照:需代理申请支付接口';xuanzelist.sqzfje=1200;"
+                    >
+                        <a href="#step7" class="mui-navigate-right">我有正常营业执照</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.sq='没有营业执照';"
+                    >
+                        <a href="#step6" class="mui-navigate-right">无法联系营业执照法人或者还没有</a>
+                    </li>
+                </ul>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="step6" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span>返回
+        </button>
+        <h1 class="mui-center mui-title">支付解决办法</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.paybanfa='我需要以他人身份代办营业执照';xuanzelist.dbfje=45000;"
+                    >
+                        <a href="#step7" class="mui-navigate-right">我需要以他人身份代办营业执照</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.paybanfa='不使用营业执照支付';xuanzelist.dbfje=1200;"
+                    >
+                        <a href="#step7" class="mui-navigate-right">我不需要营业执照,但是依然需要线上支付</a>
+                    </li>
+                </ul>
+                <div class="mui-content-padded">
+                    <p>⚠:无正规营业执照,将使用第四方提供的支付服务.</p>
+                    <p>⚠:存在漏单可能</p>
+                    <p>⚠:接口易封;</p>
+                    <p>⚠:第四方可能盗取资金;</p>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="step7" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span>返回
+        </button>
+        <h1 class="mui-center mui-title">APP等选择</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.app='我只需要普通网页';xuanzelist.appje=0;"
+                    >
+                        <a href="#step8" class="mui-navigate-right">我只需要普通网页</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.app='我需要Web APP [安卓]';xuanzelist.appje=0;"
+                    >
+                        <a href="#step8" class="mui-navigate-right">我需要Web APP [安卓]</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.app='我需要Web APP [安卓] + [苹果]';xuanzelist.appje=(1500+1600);"
+                    >
+                        <a href="#step8" class="mui-navigate-right">我需要Web APP [安卓] + [苹果]</a>
+                    </li>
+
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.app='我需要原生APP [安卓]';xuanzelist.appje=16500;">
+                        <a href="#step8" class="mui-navigate-right">我需要原生APP [安卓]</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.app='我需要原生APP [安卓]';xuanzelist.appje=(16500+21500);"
+                    >
+                        <a href="#step8" class="mui-navigate-right">我需要原生APP [安卓] + [苹果]</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.app='我需要微信公众号';xuanzelist.appje=1200;"
+                    >
+                        <a href="#step8" class="mui-navigate-right">我需要微信公众号</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.app='我需要微信公众号+Web APP [安卓] + [苹果]';xuanzelist.appje=(1200+1600+1500);"
+                    >
+                        <a href="#step8" class="mui-navigate-right">我需要微信公众号+Web APP [安卓] + [苹果] </a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.app='我需要微信公众号+原生 APP [安卓] + [苹果]';xuanzelist.appje=(1200+16500+21500);"
+                    >
+                        <a href="#step8" class="mui-navigate-right">我需要微信公众号+原生 APP [安卓] + [苹果] </a>
+                    </li>
+
+                </ul>
+                <div class="mui-content-padded">
+                    <p>⚠:Web APP 使用网页封装APP,价格较低.苹果只需每年1600封装费+300元/月签名费用,安卓每年1500;</p>
+                    <p>⚠:原生APP 更流畅舒适.安卓:16500;苹果:21500,苹果上架慢</p>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="step8" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span>返回
+        </button>
+        <h1 class="mui-center mui-title">会员量预估</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.hy='1-500人或逐步发展';xuanzelist.hyje=0;"
+                    >
+                        <a href="#step9" class="mui-navigate-right">1-500人或逐步发展</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.hy='1万~5万人';xuanzelist.hyje=18000;"
+                    >
+                        <a href="#step9" class="mui-navigate-right">1万~5万人</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.hy='8~12万人';xuanzelist.hyje=36000;"
+                    >
+                        <a href="#step9" class="mui-navigate-right">8~12万人</a>
+                    </li>
+
+                </ul>
+                <div class="mui-content-padded">
+                    <p>⚠:如果一天内过多相同金额,支付宝会立即冻结账户,或日收入超过5万会被重点监控</p>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="step9" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span>返回
+        </button>
+        <h1 class="mui-center mui-title">基础安全选择</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.safe='基础安全套件';xuanzelist.safeje=0;"
+                    >
+                        <a href="#step10" class="mui-navigate-right">暂时不用</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.safe='全套安全:安软+证书';xuanzelist.safeje=(1350+1250);"
+                    >
+                        <a href="#step10" class="mui-navigate-right">全套安全</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.safe='HTTPS证书';xuanzelist.safeje=1250;"
+                    >
+                        <a href="#step10" class="mui-navigate-right">HTTPS证书</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.safe='服务器安全软件';xuanzelist.safeje=1350;"
+                    >
+                        <a href="#step10" class="mui-navigate-right">服务器安全软件</a>
+                    </li>
+                </ul>
+                <div class="mui-content-padded">
+                    <p>⚠:全套安全:1350元/年服务器安全软件+ 1250元/年 HTTPS安全证书</p>
+                    <p>⚠:DOS防御:略</p>
+                    <p>⚠:使用小程序务必选择HTTPS证书</p>
+
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="step10" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span>返回
+        </button>
+        <h1 class="mui-center mui-title">运维选择</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.yw='基础运维-免';xuanzelist.ywje=0;"
+                    >
+                        <a href="#step11" class="mui-navigate-right">基础运维-免费</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.yw='高级运维';xuanzelist.ywje=2500;"
+                    >
+                        <a href="#step11" class="mui-navigate-right">高级运维</a>
+                    </li>
+                </ul>
+                <div class="mui-content-padded">
+                    <p>⚠:基础运维,免费.前三个月承诺:2小时内响应,5小时内解决问题,每月可查询2次数据.三个月后,承诺48小时解决问题.但误报或查询数据需额外收费.每次180元</p>
+                    <p>⚠:高级运维:2500元/月.专人维护,承诺:15分钟内响应,4小时内解决问题.每月可查询15次数据.定时人工核查服务器安全</p>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="step11" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span>返回
+        </button>
+        <h1 class="mui-center mui-title">是否需要代管理</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.gl='我不需要代管理';xuanzelist.glje=0;"
+                    >
+                        <a href="#step12" class="mui-navigate-right">我不需要代管理</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.gl='我需要代管理';xuanzelist.glje=3500;"
+                    >
+                        <a href="#step12" class="mui-navigate-right">我需要代管理</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="console.log('我需要客服');xuanzelist.gl='我需要客服';xuanzelist.glje=3600;"
+                    >
+                        <a href="#step12" class="mui-navigate-right">我需要客服</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+
+                    >
+                        <a href="#step12"  onclick="console.log('我需要代管理 和 客服'));xuanzelist.gl='我需要代管理 和 客服';xuanzelist.glje=3600+3500;" class="mui-navigate-right">
+                            我需要代管理 和 客服</a>
+                    </li>
+                </ul>
+                <div class="mui-content-padded">
+                    <p>⚠:代管理:系统专业管理人员,全职管理,正常节假日:3500元/月</p>
+                    <p>⚠:代管理:系统专业管理人员,全职管理,24小时响应:6500元/月</p>
+                    <p>⚠:客服人员:3600元/月,可电话营销,提供通话录音和账单.电话营销会产生话费</p>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="step12" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span>返回
+        </button>
+        <h1 class="mui-center mui-title" onclick="console.log(xuanzelist)">价格</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                 <table>
+                     <tr>
+                         <th>项目</th><th>价格</th>
+                     </tr>
+                     <tr>
+                         <td></td><td></td>
+                     </tr>
+                 </table>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>document.addEventListener('LiveReloadDisconnect', function() { setTimeout(function() { window.location.reload(); }, 500); })</script></body>
+<script src="/js/mui.js"></script>
+<!--<script src="/js/mui.view.js "></script>-->
+
+<script>
+    mui.init();
+    //初始化单页view
+    var viewApi = mui('#app').view({
+        defaultPage: '#setting'
+    });
+    //客户选择列表
+
+    //初始化单页的区域滚动
+    mui('.mui-scroll-wrapper').scroll();
+    var view = viewApi.view;
+    (function($) {
+        //处理view的后退与webview后退
+        var oldBack = $.back;
+        $.back = function() {
+            if (viewApi.canBack()) { //如果view可以后退，则执行view的后退
+                viewApi.back();
+            } else { //执行webview后退
+                oldBack();
+            }
+        };
+        //监听页面切换事件方案1,通过view元素监听所有页面切换事件，目前提供pageBeforeShow|pageShow|pageBeforeBack|pageBack四种事件(before事件为动画开始前触发)
+        //第一个参数为事件名称，第二个参数为事件回调，其中e.detail.page为当前页面的html对象
+        view.addEventListener('pageBeforeShow', function(e) {
+            //				console.log(e.detail.page.id + ' beforeShow');
+        });
+        view.addEventListener('pageShow', function(e) {
+            //				console.log(e.detail.page.id + ' show');
+        });
+        view.addEventListener('pageBeforeBack', function(e) {
+            //				console.log(e.detail.page.id + ' beforeBack');
+        });
+        view.addEventListener('pageBack', function(e) {
+            //				console.log(e.detail.page.id + ' back');
+        });
+    })(mui);
+
+
+
+    if(mui.os.stream){
+        document.getElementById("check_update").display = "none";
+    }
+
+</script>
+
+</html>

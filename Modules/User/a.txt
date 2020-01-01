@@ -1,0 +1,4 @@
+工具类模块:
+文档 https://nwidart.com/laravel-modules/v4/installation-and-setup
+生成方法 php artisan module:make <module-name>
+php artisan module:make User

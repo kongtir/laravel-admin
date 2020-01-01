@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>对碰计算</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="/vendor/laravel-admin/AdminLTE/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/laravel-admin/AdminLTE/dist/css/AdminLTE.min.css">
+
+    <script src="/vendor/laravel-admin/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="/js/layer/layer.js"></script>
+
+<style>
+    .td2{
+        color: #0d6aad;
+        font-weight: bold;!important;
+    }
+</style>
+
+
+</head>
+
+<body class="hold-transition skin-black sidebar-mini sidebar-collapse">
+<div class="wrapper">
+
+
+    <div class="content-wrapper " id="pjax-container">
+        <div id="app">
+            <section class="content-header">
+
+
+            </section>
+
+            <section class="content">
+
+
+                <div class="row"><div class="col-md-12"><div class="box box-info" id="list">
+                    <!--<div class="box-header with-border">-->
+                        <!--<h3 class="box-title">创建</h3>-->
+                        <!--<div class="box-tools">-->
+                            <!--<div class="btn-group pull-right" style="margin-right: 5px">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form action="/admin/cal" method="post" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data" pjax-container>
+
+                        <div class="box-body">
+
+                            <div class="fields-group">
+
+                                <div class="form-group  ">
+
+                                    <div class="col-sm-8"  >
+                                        <label   class="col-sm-2  control-label">每单金额</label>
+                                        <div class="input-group" style="float: right">
+                                            <input style="width: 100px" type="number" id="dan" name="price" value="20000"
+                                                   min="0"
+                                                   class="form-control price" placeholder="输入每单金额" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group  ">
+                                    <div class="col-sm-8" >
+                                        <label  class="col-sm-2  control-label">直推奖励</label>
+                                        <div class="input-group"  style="float: right">
+
+                                            <input style="width: 100px" type="number" id="f1" name="price" value="0.2"  min="0"
+                                                   class="form-control price" placeholder="输入直推奖励" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group  ">
+                                    <div class="col-sm-8" >
+                                        <label  class="col-sm-2  control-label">2代收益</label>
+                                        <div class="input-group"  style="float: right">
+
+                                            <input style="width: 100px" type="number" id="f2" name="price" value="0.05"  min="0"
+                                                   class="form-control price" placeholder="输入2代收益" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group  ">
+                                    <div class="col-sm-8" >
+                                        <label  class="col-sm-2  control-label">3代收益</label>
+                                        <div class="input-group"  style="float: right">
+
+                                            <input style="width: 100px" type="number" id="f3" name="price" value="0.05"  min="0"
+                                                   class="form-control price" placeholder="3代收益" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group  ">
+                                    <div class="col-sm-8" >
+                                        <label  class="col-sm-2  control-label">对碰收益</label>
+                                        <div class="input-group"  style="float: right">
+
+                                            <input style="width: 100px" type="number" id="dp" name="price" value="0.1"  min="0"
+                                                   class="form-control price" placeholder="3代收益" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group  ">
+                                    <div class="col-sm-8" >
+                                        <label  class="col-sm-2  control-label">封顶金额</label>
+                                        <div class="input-group"  style="float: right">
+
+                                            <input style="width: 100px" type="number" id="max" name="price" value="50000"  min="0"
+                                                   class="form-control price" placeholder="封顶金额" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group  ">
+                                    <div class="col-sm-8"  >
+                                        <label  class="col-sm-2  control-label">提现扣除</label>
+                                        <div class="input-group "  style="float: right">
+                                            <input style="width: 100px" type="number" id="sxf" name="price" value="0.1" min="0"
+                                                   class="form-control price" placeholder="输入提现扣除" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group  ">
+                                    <div class="col-sm-8"  >
+                                        <label  class="col-sm-2  control-label">模拟层数</label>
+                                        <div class="input-group "  style="float: right">
+                                            <input style="width: 100px" type="number" id="ceng" name="price" value="4" min="1"
+                                                   max="25"
+                                                   class="form-control price" placeholder="输入提现扣除" />
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <p>⚠最高模拟25层,层数越多,模拟越慢,请耐心等候.</p>
+                            <p>⚠超过12层可能导致运行缓慢,请确保手机性能.关闭页面或减少层数即可恢复流畅</p>
+                        </div>
+                        <!-- /.box-body -->
+                        <!--<label  style="margin: 5px 10px   0 15px;" >-->
+                            <!--<input type="checkbox" checked class="after-submit" name="after-save" value="1">支付10爱心豆计算-->
+                            <!--<span style="color: #00a7d0;font-weight: lighter">(没有爱心豆❤?立刻去<span style="color: red">签到!</span>)</span>-->
+                        <!--</label>-->
+                        <div class="box-footer">
+
+                            <input type="hidden" name="_token" value="BRyhnSuT3TqL2u00hvmtruJBwKcpRreHAEujIx7i">
+
+                            <div class="col-md-2">
+                            </div>
+
+                            <div class="col-md-8">
+
+                                <div class="btn-group pull-right">
+                                    <button type="button"  class="btn-primary btn-microsoft"  onclick="cal(this)">开始计算</button>
+                                </div>
+
+                                <div class="btn-group pull-left">
+                                    <button type="reset" class="btn btn-warning">重置</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- /.box-footer -->
+                    </form>
+
+                    <table  class="table table-hover" >
+                        <tbody>
+                        <tr>
+                            <td>每单金额</td>
+                            <td class="td2" >{{collect.dan}}</td>
+                            <td>直推奖励</td>
+                            <td class="td2">{{collect.f1}}</td>
+                        </tr>
+                        <tr>
+                            <td>2代收益</td>
+                            <td class="td2">{{collect.f2}}</td>
+                            <td>3代收益</td>
+                            <td class="td2">{{collect.f3}}</td>
+                        </tr>
+                        <tr>
+                        </tr>
+                        <td>对碰收益</td>
+                        <td class="td2">{{collect.dp}}</td>
+                        <td>封顶金额</td>
+                        <td class="td2">{{collect.max}}</td>
+                        <tr>
+                            <td>提现扣除</td>
+                            <td class="td2">{{collect.sxf}}</td>
+                            <td>模拟层数</td>
+                            <td class="td2">{{collect.ceng}}</td>
+                        </tr>
+                        <tr>
+                            <td>总收益</td>
+                            <td class="td2">{{collect.allmoeny}}</td>
+                            <td>总拨出</td>
+                            <td class="td2">{{collect.outmoney}}</td>
+                        </tr>
+                        <tr>
+                            <td>手续费</td>
+                            <td class="td2">{{collect.outmoney -collect.outmoney_sxf}}</td>
+                            <td>拨比</td>
+                            <td class="td2">{{collect.bobi}}%</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="panel-group" id="accordion">
+
+                        <div class="panel panel-default"  v-for="(itms,index) in list"  >
+                            <div class="panel-heading">
+                                <span class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" style="display: block;width: 100%;font-size: 14px;"
+                                       :href="'#collapseTwo'+index">
+                                        会员
+                                        <span class="td2">{{itms.id}}</span> &nbsp;第<span class="td2">{{itms.ceng}}</span>层&nbsp;
+                                        投资:<span class="td2">{{itms.touzhi}}</span>&nbsp;收益<span class="td2">{{itms.huode}}</span>
+                                        <strong><span style="color: #9f191f">账单</span></strong>
+                                    </a>
+                                </span>
+                            </div>
+                            <div :id="'collapseTwo'+index" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <table  class="table table-hover" >
+                                        <thead>
+                                        <tr>
+                                            <th>次序</th><th>变动金额</th><th>当前余额</th><th>奖励来源</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr  v-for="itm in itms.zhangdan" >
+                                            <td>{{itm.aid}}</td><td>{{itm.change}}</td><td>{{itm.curmoney}}</td><td>{{itm.remark}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                </div>
+
+                </div></div>
+
+            </section>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+
+        <script>
+
+            var list = new Vue({
+                el: '#list',
+                data: {
+                    collect:{},
+                    list: [],
+                }
+            });
+            function cal(d) {
+
+                layer.msg('正在计算,请稍候,大概5-15s', {
+                    icon: 16
+                    ,shade: 0.6,time:36000
+                });
+                // layer.closeAll();
+               $.ajax({
+                   type: "POST",
+                   url: "/api/t/cal/duipeng",
+                   data: {
+                       dan:$("#dan").val(),
+                       f1:$("#f1").val(),f2:$("#f2").val(),f3:$("#f3").val(),
+                       dp:$("#dp").val(),
+                       max:$("#max").val(),
+                       sxf:$("#sxf").val(),
+                       ceng:$("#ceng").val(),
+                   },
+                   dataType: "json",
+                   success: function (data) {
+                        if(data.status){
+                            list.collect = data.data.data;
+                            list.list = data.data.list;
+                        }else{
+                            console.log(data.msg);
+                        }
+                       layer.closeAll();
+                       layer.msg("正在处理数据...")
+                   },error:function () {
+                       layer.closeAll();
+                   }
+               });
+
+            }
+
+
+
+        </script>
+        <script data-exec-on-popstate>
+
+            $(function () {
+                $('.price:not(.initialized)')
+                    .addClass('initialized')
+                    .bootstrapNumber({
+                        upClass: 'success',
+                        downClass: 'primary',
+                        center: true
+                    });
+                $('.after-submit').iCheck({checkboxClass:'icheckbox_minimal-blue'}).on('ifChecked', function () {
+                    $('.after-submit').not(this).iCheck('uncheck');
+                });
+            });
+        </script>
+    </div>
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+            <strong>Env</strong>&nbsp;&nbsp; local
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <strong>Version</strong>&nbsp;&nbsp; 1.6.10
+
+        </div>
+        <!-- Default to the left E23456 跳转出APP -->
+        <strong>Powered by <a href="http://jiww.top" target="_blank" id="jiwwtop">极维软件 http://jiww.top</a></strong>
+    </footer>
+</div>
+
+<script>
+    function LA() {}
+    LA.token = "BRyhnSuT3TqL2u00hvmtruJBwKcpRreHAEujIx7i";
+</script>
+
+<!-- REQUIRED JS SCRIPTS -->
+<script src="/vendor/laravel-admin/AdminLTE/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vendor/laravel-admin/number-input/bootstrap-number-input.js"></script>
+<script src="/vendor/laravel-admin/AdminLTE/plugins/iCheck/icheck.min.js"></script>
+
+
+
+</body>
+</html>
+<script src="cal.js"></script>

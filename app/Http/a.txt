@@ -1,0 +1,22 @@
+php artisan  make:controller IndexController
+创建 app/Http/Controllers/IndexController.php
+--
+php artisan  make:controller Home/IndexController
+创建 app/Http/Controllers/Home/IndexController.php
+--
+
+php artisan  make:controller Admin/IndexController
+=====================
+https://laravel-admin.org/docs/zh/quick-start
+使用下面的命令来创建一个对应App\User模型的路由器
+
+php artisan admin:make UserController --model=App\\User
+// 在windows系统中
+php artisan admin:make UserController --model=App\User
+
+添加路由配置
+在laravel-admin的路由配置文件app/Admin/routes.php里添加一行：
+$router->resource('users', UserController::class);
+
+剩下的工作就是构建数据表格和表单了，打开 app/Admin/Contollers/UserController.php,找到show()、grid()和form()方法，
+然添加构建代码更多详细使用请查看model-grid和model-form。

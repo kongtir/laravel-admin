@@ -1,0 +1,14 @@
+{
+    "name": "Douying",
+    "alias": "douying",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Douying\\Providers\\DouyingServiceProvider"
+    ],
+    "aliases": [],
+    "files": [],
+    "requires": []
+}

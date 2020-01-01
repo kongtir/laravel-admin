@@ -1,0 +1,16 @@
+模型的目录: 外边User.php 也是模型
+
+我都是建议使用模型的而不要直接使用M方法；
+laravel 中我同样建议使用模型而不直接使用DB；
+上文中我讲过表的命名是使用单词的复数形式；
+而模型文件的命名则是使用单词的单数形式；
+对于有下划线的表名需要写成驼峰形式；
+比如说 article_tags 表的模型文件名是 ArticleTag；
+依然不需要手动去创建模型文件；
+laravel double次的很贴心的为我们准备好了命令行；
+
+php artisan make:model Article  默认在app下
+php artisan make:model Models/Article 建立模型文件 app/Models
+
+php artisan make:model Models/Article -m 同时创建迁移文件和模型文件；
+database\migrations\迁移文件位置

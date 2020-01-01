@@ -1,0 +1,562 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>价格预估</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+
+    <script>
+        var xuanzelist ={};
+    </script>
+
+    <link rel="stylesheet" href="/vendor/laravel-admin/AdminLTE/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/build.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script src="/vendor/laravel-admin/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="/js/layer/layer.js"></script>
+
+</head>
+
+<body class="mui-fullscreen">
+<!--页面主结构开始-->
+<div id="app" class="mui-views">
+    <div class="mui-view">
+        <div class="mui-navbar">
+        </div>
+        <div class="mui-pages">
+        </div>
+    </div>
+</div>
+<!--页面主结构结束-->
+<!--单页面开始-->
+<div id="setting" class="mui-page" style="display: block">
+    <!--页面标题栏开始-->
+
+    <!--页面标题栏结束-->
+    <!--页面主内容区开始-->
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+
+                <div class="mui-content-padded">
+                    <h4>项目类型选择:</h4>
+                </div>
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.xm={};xuanzelist.xm.name='普通项目>国内服务器';xuanzelist.xm.price=1650;$('#mui-page').hide();$('#step0').show() ">
+                        <a bhref="#step0"  data-poor="poor" aaa="123" class="mui-navigate-right">普通项目>[国内服务器:1650/年]</a>
+                    </li>
+                    <li class="mui-table-view-cell" >
+                        <a bhref="#step0" data-poor="poor2" aaa="567" class="mui-navigate-right"
+                           onclick="xuanzelist.xm={};xuanzelist.xm.name='三级分销等资金盘等>国外服务器';xuanzelist.xm.price=3300;$('#mui-page').hide();$('#step0').show();"
+                        >币圈,资金盘,互助,三级分销,棋牌>国外:3300/年</a>
+                    </li>
+                </ul>
+
+                <div class="mui-content-padded">
+                    <h4>模拟计算:</h4>
+                </div>
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell" >
+                        <a href="bobi.html" style="color: dodgerblue;font-weight: bold">递减分拨模拟计算</a>
+                    </li>
+                    <li class="mui-table-view-cell" >
+                        <a href="duipeng.html"  style="color: dodgerblue;font-weight: bold">对碰模拟计算</a>
+                    </li>
+                </ul>
+                <br> <br> <br> <br>
+                <strong style="margin-top: 50px">Powered by <a href="http://jiww.top" target="_blank" >极维软件 http://jiww.top</a></strong>
+            </div>
+        </div>
+    </div>
+    <!--页面主内容区结束-->
+</div>
+<!--单页面结束-->
+
+<div id="step0" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span><span onclick="window.location.reload()">重新计算</span>
+        </button>
+        
+        <h1 class="mui-center mui-title">是否需要额外开发</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.kaifa={};xuanzelist.kaifa.name='选择案例中的项目';xuanzelist.kaifa.price=0;$('#mui-page').hide();$('#step3').show();"
+                    >
+                        <a bhref="#step3" class="mui-navigate-right">已在案例中选中应用,[0]</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.kaifa={};xuanzelist.kaifa.name='需要开发或仿制';xuanzelist.kaifa.price=0;$('#mui-page').hide();$('#step2').show();"
+                    >
+                        <a bhref="#step2" class="mui-navigate-right">需要开发或仿制,[更多选项]</a>
+                    </li>
+                </ul>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="step2" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span><span onclick="window.location.reload()">重新计算</span>
+        </button>
+        <h1 class="mui-center mui-title">开发复杂层度预估</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell">
+                        <a bhref="#step3" class="mui-navigate-right"
+                           onclick="xuanzelist.kaifa.name+='>一般[7-15天]';xuanzelist.kaifa.price+=2200;$('#mui-page').hide();$('#step3').show();"
+                        >一般:如官网等[2200+]</a>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a bhref="#step3" class="mui-navigate-right"
+                           onclick="xuanzelist.kaifa.name+='>适中[15-30天]';xuanzelist.kaifa.price+=3200;$('#mui-page').hide();$('#step3').show();"
+                        >适中:多币种,积分资金盘等[3200+]</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.kaifa.name+='>复杂[18-45天]';xuanzelist.kaifa.price+=6200;$('#mui-page').hide();$('#step3').show();"
+                    >
+                        <a bhref="#step3" class="mui-navigate-right">复杂:多用户商城+多级分销等[6200+]</a>
+                    </li>
+                </ul>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="step3" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span><span onclick="window.location.reload()">重新计算</span>
+        </button>
+        <h1 class="mui-center mui-title">是否需要线上支付</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.pay={};xuanzelist.pay.name='无需线上支付';xuanzelist.pay.price=0;$('#mui-page').hide();$('#step7').show();"
+                    >
+                        <a bhref="#step6" class="mui-navigate-right"
+
+                        >无需线上支付,[0]</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.pay={};xuanzelist.pay.name='需要微信或支付宝支付';xuanzelist.pay.price=0;$('#mui-page').hide();$('#step4').show();">
+                        <a bhref="#step4" class="mui-navigate-right">需要微信或支付宝支付,[更多选项]</a>
+                    </li>
+                </ul>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="step4" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span><span onclick="window.location.reload()">重新计算</span>
+        </button>
+        <h1 class="mui-center mui-title">是否有相关账户</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.zhanghu={};xuanzelist.zhanghu.name='我已有公司账户的支付宝或微信';xuanzelist.zhanghu.price=0;$('#mui-page').hide();$('#step7').show();"
+                    >
+                        <a bhref="#step7" class="mui-navigate-right">我已有公司账户的支付宝或微信,[0] </a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.zhanghu={};xuanzelist.zhanghu.name='没有支付账户';xuanzelist.zhanghu.price=0;$('#mui-page').hide();$('#step5').show();"
+                    >
+                        <a bhref="#step5" class="mui-navigate-right">我还没有或者不知道这是什么,[更多选项]</a>
+                    </li>
+                </ul>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="step5" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span><span onclick="window.location.reload()">重新计算</span>
+        </button>
+        <h1 class="mui-center mui-title">是否有营业执照</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.sq={};xuanzelist.sq.name='我有正常营业执照:需代理申请支付接口';xuanzelist.sq.price=1200;$('#mui-page').hide();$('#step7').show();"
+                    >
+                        <a bhref="#step7" class="mui-navigate-right">我有正常营业执照[1200+]</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.sq={};xuanzelist.sq.name='没有营业执照';xuanzelist.sq.price=0;$('#mui-page').hide();$('#step6').show();"
+                    >
+                        <a bhref="#step6" class="mui-navigate-right">无法联系营业执照法人或者还没有,[更多选项]</a>
+                    </li>
+                </ul>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="step6" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span><span onclick="window.location.reload()">重新计算</span>
+        </button>
+        <h1 class="mui-center mui-title">支付解决办法</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.paybanfa={};xuanzelist.paybanfa.name='我需要以他人身份代办营业执照';xuanzelist.paybanfa.price=45000;$('#mui-page').hide();$('#step7').show();"
+                    >
+                        <a bhref="#step7" class="mui-navigate-right">我需要以他人身份代办营业执照[45000+]</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.paybanfa={};xuanzelist.paybanfa.name='不使用营业执照支付';xuanzelist.paybanfa.price=1200;$('#mui-page').hide();$('#step7').show();"
+                    >
+                        <a bhref="#step7" class="mui-navigate-right">我不需要营业执照,但是依然需要线上支付[1200+]</a>
+                    </li>
+                </ul>
+                <div class="mui-content-padded">
+                    <p>⚠:无正规营业执照,将使用第四方提供的支付服务.</p>
+                    <p>⚠:存在漏单可能</p>
+                    <p>⚠:接口易封;</p>
+                    <p>⚠:第四方可能盗取资金;</p>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="step7" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span><span onclick="window.location.reload()">重新计算</span>
+        </button>
+        <h1 class="mui-center mui-title">APP等选择</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.app={};xuanzelist.app.name='我只需要普通网页';xuanzelist.app.price=0;$('#mui-page').hide();$('#step8').show();"
+                    >
+                        <a bhref="#step8" class="mui-navigate-right">我需要网页,赠送安卓APP,[0]</a>
+                    </li>
+
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.app={};xuanzelist.app.name='网页,安卓APP,苹果APP\r\n企业签名:300/月,苹果下载100元/1000次';xuanzelist.app.price=400;$('#mui-page').hide();$('#step8').show();"
+                    >
+                        <a bhref="#step8" class="mui-navigate-right">我还需要苹果APP,[400]<br>企业签名:300/月,苹果下载100元/1000次</a>
+                    </li>
+
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.app={};xuanzelist.app.name='我需要微信公众号';xuanzelist.app.price=1200;$('#mui-page').hide();$('#step8').show();"
+                    >
+                        <a bhref="#step8" class="mui-navigate-right">我需要微信公众号[1200+]</a>
+                    </li>
+
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.app={};xuanzelist.app.name='我需要微信公众号+安卓+苹果\r\n企业签名:300/月,苹果下载100元/1000次';xuanzelist.app.price=1600;$('#mui-page').hide();$('#step8').show();"
+                    >
+                        <a bhref="#step8" class="mui-navigate-right">我需要微信公众号+安卓+苹果,[1600]<br>企业签名:300/月,苹果下载100元/1000次</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.app={};xuanzelist.app.name='我需要微信公众号+安卓+苹果+小程序\r\n企业签名:300/月,苹果下载100元/1000次';xuanzelist.app.price=2600;$('#mui-page').hide();$('#step8').show();"
+                    >
+                        <a bhref="#step8" class="mui-navigate-right">除了这些,我还需要小程序,[2600]</a>
+                    </li>
+
+                </ul>
+                <div class="mui-content-padded">
+                    <p>⚠:新开发都送安卓APP,少部分已有应用不含app,不送</p>
+                    <p>⚠:<span style="color: #9f191f">苹果签名偶现封禁风险.如果掉签请及时联系.</span></p>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="step8" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span><span onclick="window.location.reload()">重新计算</span>
+        </button>
+        <h1 class="mui-center mui-title">会员量预估</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.hy={};xuanzelist.hy.name='1-500人或逐步发展:基本服务器/年';xuanzelist.hy.price=0;$('#mui-page').hide();$('#step9').show();"
+                    >
+                        <a bhref="#step9" class="mui-navigate-right">1-500人或逐步发展:基本服务器/年,[0]</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.hy={};xuanzelist.hy.name='2万~5万人:中等服务器/年';xuanzelist.hy.price=18000;$('#mui-page').hide();$('#step9').show();"
+                    >
+                        <a bhref="#step9" class="mui-navigate-right">2万~5万人:中等服务器/年,[18000]</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.hy={};xuanzelist.hy.name='8~12万人:高级服务器/年';xuanzelist.hy.price=36000;$('#mui-page').hide();$('#step9').show();"
+                    >
+                        <a bhref="#step9" class="mui-navigate-right">8~12万人:高级服务器/年,[36000]</a>
+                    </li>
+
+                </ul>
+                <div class="mui-content-padded">
+                    <p>⚠:如果一天内过多相同金额,支付宝会立即冻结账户,或日收入超过5万会被重点监控</p>
+                    <p>⚠:会员过多主要是服务器费用增加</p>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="step9" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span><span onclick="window.location.reload()">重新计算</span>
+        </button>
+        <h1 class="mui-center mui-title">基础安全选择</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.safe={};xuanzelist.safe.name='基础安全套件';xuanzelist.safe.price=0;$('#mui-page').hide();$('#step10').show();"
+                    >
+                        <a bhref="#step10" class="mui-navigate-right">暂时不用,[0]</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.safe={};xuanzelist.safe.name='全套安全(安软+HTTPS)/年';xuanzelist.safe.price=(1350+1250);$('#mui-page').hide();$('#step10').show();"
+                    >
+                        <a bhref="#step10" class="mui-navigate-right">全套安全(HTTPS+安软)/年,[1350+1250]</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.safe={};xuanzelist.safe.name='HTTPS证书/年';xuanzelist.safe.price=1250;$('#mui-page').hide();$('#step10').show();"
+                    >
+                        <a bhref="#step10" class="mui-navigate-right">HTTPS证书/年,[1250]</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.safe={};xuanzelist.safe.name='服务器安全软件/年';xuanzelist.safe.price=1350;$('#mui-page').hide();$('#step10').show();"
+                    >
+                        <a bhref="#step10" class="mui-navigate-right">服务器安全软件/年,[1350]</a>
+                    </li>
+                </ul>
+                <div class="mui-content-padded">
+                    <p>⚠:全套安全:1350元/年服务器安全软件+ 1250元/年 HTTPS安全证书</p>
+                    <p>⚠:DOS防御:略</p>
+                    <p>⚠:使用小程序务必选择HTTPS证书</p>
+
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="step10" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span><span onclick="window.location.reload()">重新计算</span>
+        </button>
+        <h1 class="mui-center mui-title">运维选择</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.yw={};xuanzelist.yw.name='基础运维';xuanzelist.yw.price=0;$('#mui-page').hide();$('#step11').show();"
+                    >
+                        <a bhref="#step11" data-poor="poor" class="mui-navigate-right">基础运维-免费,[0]</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.yw={};xuanzelist.yw.name='高级运维(月付)';xuanzelist.yw.price=2500;$('#mui-page').hide();$('#step11').show();"
+                    >
+                        <a bhref="#step11" data-poor2="poor2"  class="mui-navigate-right">高级运维,[2500/月]</a>
+                    </li>
+                </ul>
+                <div class="mui-content-padded">
+                    <p>⚠:基础运维,免费.45天承诺:开发错误,2小时内响应,5小时内解决问题,每月可查询2次数据.
+                        <br>
+                        45天后,进入项目稳定期,承诺48小时免费解决应用错误.但误报错误或查询数据需额外收费.每次180元</p>
+                    <p>⚠:高级运维:2500元/月.专人维护,承诺:15分钟内响应,4小时内解决问题.每月可查询15次数据,<span style="color: red">或</span>两次小调整;定时人工核查服务器安全</p>
+
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="step11" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span><span onclick="window.location.reload()">重新计算</span>
+        </button>
+        <h1 class="mui-center mui-title">是否需要代管理</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.gl={};xuanzelist.gl.name='我不需要代管理';xuanzelist.gl.price=0;$('#mui-page').hide();$('#step12').show();ShowDB();"
+                    >
+                        <a bhref="#step12" class="mui-navigate-right">我不需要代管理,[0]</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.gl={};xuanzelist.gl.name='我需要代管理/月';xuanzelist.gl.price=3500;$('#mui-page').hide();$('#step12').show();ShowDB();"
+                    >
+                        <a bhref="#step12" class="mui-navigate-right">我需要代管理,3500/月</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+                        onclick="xuanzelist.gl={};xuanzelist.gl.name='我需要客服/月';xuanzelist.gl.price=3600;$('#mui-page').hide();$('#step12').show();ShowDB();"
+                    >
+                        <a bhref="#step12" class="mui-navigate-right">我需要客服,3600/月</a>
+                    </li>
+                    <li class="mui-table-view-cell"
+
+                    >
+                        <a bhref="#step12"  onclick="xuanzelist.gl={};xuanzelist.gl.name='我需要代管理 和 客服,3600+3500/月';xuanzelist.gl.price=3600+3500;$('#mui-page').hide();$('#step12').show();ShowDB();"
+                           class="mui-navigate-right">
+                            我需要代管理 和 客服</a>
+                    </li>
+                </ul>
+                <div class="mui-content-padded">
+                    <p>⚠:代管理:系统专业管理人员,全职管理,正常节假日:3500元/月</p>
+                    <p>⚠:代管理:系统专业管理人员,全职管理,24小时响应:6500元/月</p>
+                    <p>⚠:客服人员:3600元/月,可电话营销,提供通话录音和账单.电话营销会产生话费</p>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/vue.js"></script>
+
+<div id="step12" class="mui-page">
+    <div class="mui-navbar-inner mui-bar mui-bar-nav">
+        <button type="button" class="mui-left  mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+            <span class="mui-icon mui-icon-left-nav"></span><span onclick="window.location.reload()">重新计算</span>
+            
+        </button>
+        <h1 class="mui-center mui-title" onclick="console.log(xuanzelist)">价格</h1>
+    </div>
+    <div class="mui-page-content">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll" id="datac">
+                 <table class="table table-hover">
+                     <tr>
+                         <th>项目</th><th>价格</th>
+                     </tr>
+                     <tr v-for="itm in data">
+                         <td style="font-weight: bold;" >{{itm.name}}</td><td style="font-weight: bold;color: #0d6aad">{{itm.price}}</td>
+                     </tr>
+                 </table>
+
+                <div class="row" align="right" style="padding-right: 40px">
+                        <button type="button" onclick="zxdh()"  class="btn btn-primary">立即咨询</button>
+                </div>
+                    <div align="center">
+                        <strong>Powered by <a href="http://jiww.top" target="_blank" id="jiwwtop">极维软件 http://jiww.top</a></strong>
+                    </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+
+
+
+<script>
+
+
+    var datac = new Vue({
+        el: '#datac',
+        data: {
+            data:{},
+
+        }
+    });
+function ShowDB() {
+    var data =[];
+    var allmy =0;
+    for(var i in xuanzelist){
+        var value = xuanzelist[i];
+        data.push(value);
+        allmy+=value.price ;
+    }
+    data.push({name:"合计",price:allmy});
+    datac.data= data;
+}
+
+function zxdh() {
+    $.ajax({
+        type: "POST",
+        url: "http://jiww.top/api.php/cms/company",
+        data: {},
+        dataType: "json",
+        success: function (data) {
+            var phone =data.data.mobile ;
+            location.href = 'tel:' + phone;
+
+        },error:function () {
+
+        }
+    });
+}
+
+</script>
+
+</html>
+<script src="cal.js"></script>

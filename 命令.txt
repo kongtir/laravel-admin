@@ -1,0 +1,34 @@
+ https://nwidart.com/laravel-modules/v4/advanced-tools/artisan-commands
+ http://www.laravel-admin.org/docs/zh/upgrading
+
+ composer install
+ php artisan module:make  douying
+ php artisan module:make-model DyUser douying -m
+ php artisan module:make-model DyConfig douying -m
+ php artisan module:make-model DyCode douying -m
+ php artisan module:make-model DyNews douying -m
+ php artisan module:make-model DyTx douying -m
+ php artisan module:make-model DyTask douying -m
+ php artisan module:make-model DyTasklist douying -m
+ php artisan module:make-model DyCode douying -m
+ php artisan module:migrate douying
+ php artisan admin:make Dy\\CodeController --model=Modules\\Douying\\Entities\\DyCode
+ php artisan admin:make Dy\\ConfigController --model=Modules\\Douying\\Entities\\DyConfig
+ php artisan admin:make Dy\\NewsController --model=Modules\\Douying\\Entities\\DyNews
+ php artisan admin:make Dy\\TxController --model=Modules\\Douying\\Entities\\DyTx
+ php artisan admin:make Dy\\UserController --model=Modules\\Douying\\Entities\\DyUser
+ php artisan admin:make Dy\\TaskController --model=Modules\\Douying\\Entities\\DyTask
+ php artisan admin:make Dy\\TasklistController --model=Modules\\Douying\\Entities\\DyTasklist
+ php artisan admin:make Dy\\CodeController --model=Modules\\Douying\\Entities\\DyCode
+
+php artisan module:make-controller ApiController douying
+php artisan module:make-controller ToolsController douying
+
+php artisan module:make-middleware DouyingMiddleware douying
+
+php artisan admin:action Dy\\GenerateCodePost --name="生成数据"
+php artisan admin:action Dy\\DownCodePost --name="立即下载"
+php artisan admin:action Dy\\BatchDownCodePost --grid-batch --name="立即下载"
+
+php artisan admin:action Dy\\TXOK --grid-row --name="通过"
+php artisan admin:action Dy\\TXfail --grid-row --name="驳回"

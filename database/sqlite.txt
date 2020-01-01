@@ -1,0 +1,4 @@
+在项目根目录下使用 touch database/database.sqlite 命令创建好新的 SQLite 数据库之后，
+就可以使用数据库绝对路径配置环境变量指向这个新创建的数据库：
+DB_CONNECTION=sqlite
+DB_DATABASE=/absolute/path/to/database.sqlite

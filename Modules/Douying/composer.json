@@ -1,0 +1,1 @@
+{"name": "nwidart/douying","description": "","authors": [{"name": "Nicolas Widart","email": "n.widart@gmail.com"}],"extra": {"laravel": {"providers": ["Modules\\Douying\\Providers\\DouyingServiceProvider"],"aliases": {}}},"autoload": {"psr-4": {"Modules\\Douying\\": ""}}}

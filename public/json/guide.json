@@ -1,0 +1,25 @@
+{
+    "code": 0,
+    "data": [{
+            "img": "img/guide/0.png",
+            "cn": "了解软件行情,掌握行业资讯",
+            "us": "Know the software market,Industry information",
+            "last": false,
+            "skip": true
+        },
+        {
+            "img": "img/guide/1.png",
+            "cn": "模拟运算,先发制人",
+            "us": "Analog, preemptive",
+            "last": false,
+            "skip": true
+        },
+        {
+            "img": "img/guide/2.png",
+            "cn": "快速开发,全网覆盖",
+            "us": "Rapid development, full network coverage",
+            "last": true,
+            "skip": false
+        }
+    ]
+}
